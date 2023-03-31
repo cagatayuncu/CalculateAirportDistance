@@ -2,23 +2,23 @@ namespace CalculateAirportDistance
 {
     public class Location
     {
-        public decimal lon { get; set; }
-        public decimal lat { get; set; }
+        public decimal Lon { get; set; }
+        public decimal Lat { get; set; }
     }
 
     public class Airport
     {
-        public string country { get; set; }
-        public string city_iata { get; set; }
-        public string iata { get; set; }
-        public string city { get; set; }
-        public string timezone_region_name { get; set; }
-        public string country_iata { get; set; }
-        public int rating { get; set; }
-        public string name { get; set; }
-        public Location location { get; set; }
-        public string type { get; set; }
-        public int hubs { get; set; }
+        public string Country { get; set; }
+        public string CityIata { get; set; }
+        public string Iata { get; set; }
+        public string City { get; set; }
+        public string TimezoneRegionName { get; set; }
+        public string CountryIata { get; set; }
+        public int Rating { get; set; }
+        public string Name { get; set; }
+        public Location Location { get; set; }
+        public string Type { get; set; }
+        public int Hubs { get; set; }
     }
 
 }

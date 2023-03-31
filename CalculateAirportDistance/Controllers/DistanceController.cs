@@ -15,14 +15,14 @@ namespace CalculateAirportDistance.Controllers
 
             var response = new Response
             {
-                AirportFrom = fromAirport.name,
-                AirportTo = toAirport.name,
-                Distance = CalculateDistance(fromAirport.location.lat, fromAirport.location.lon, toAirport.location.lat, toAirport.location.lon)
+                AirportFrom = fromAirport.Name,
+                AirportTo = toAirport.Name,
+                Distance = CalculateDistance(fromAirport.Location.Lat, fromAirport.Location.Lon, toAirport.Location.Lat, toAirport.Location.Lon)
             };
             return response;
         }
 
-        private async Task<Airport> GetAirportDetails(string iataCode)
+        private static async Task<Airport> GetAirportDetails(string iataCode)
         {
             var client = new RestClient("https://places-dev.cteleport.com");
             var request = new RestRequest($"airports/{iataCode}");
@@ -30,7 +30,7 @@ namespace CalculateAirportDistance.Controllers
             return response.Data;
         }
 
-        private decimal CalculateDistance(decimal lat1, decimal lon1, decimal lat2, decimal lon2)
+        private static decimal CalculateDistance(decimal lat1, decimal lon1, decimal lat2, decimal lon2)
         {
             const decimal earthRadius = 3958.8m;
             var dLat = ToRadians(lat2 - lat1);
@@ -43,7 +43,7 @@ namespace CalculateAirportDistance.Controllers
             return Math.Round(distance, 2);
         }
 
-        private double ToRadians(decimal degrees)
+        private static double ToRadians(decimal degrees)
         {
             return (double)(degrees * (decimal)Math.PI / 180);
         }
