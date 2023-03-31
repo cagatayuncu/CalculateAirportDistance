@@ -8,11 +8,18 @@ namespace CalculateAirportDistance.Controllers
     public class DistanceController : ControllerBase
     {
         [HttpGet("distance/{from}/{to}")]
-        public async Task<decimal> GetDistance(string from, string to)
+        public async Task<Response> GetDistance(string from, string to)
         {
             var fromAirport = await GetAirportDetails(from);
             var toAirport = await GetAirportDetails(to);
-            return CalculateDistance(fromAirport.location.lat, fromAirport.location.lon, toAirport.location.lat, toAirport.location.lon);
+
+            var response = new Response
+            {
+                AirportFrom = fromAirport.name,
+                AirportTo = toAirport.name,
+                Distance = CalculateDistance(fromAirport.location.lat, fromAirport.location.lon, toAirport.location.lat, toAirport.location.lon)
+            };
+            return response;
         }
 
         private async Task<Airport> GetAirportDetails(string iataCode)
